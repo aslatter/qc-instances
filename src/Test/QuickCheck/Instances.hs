@@ -202,13 +202,13 @@ instance Arbitrary OldTime.TimeDiff where
         OldTime.normalizeTimeDiff <$>
            (OldTime.diffClockTimes <$> arbitrary <*> arbitrary)
     shrink td@(OldTime.TimeDiff year month day hour minute second picosec) =
-        [ td { OldTime.tdYear    = y' } | y' <- shrink year    ] ++
-        [ td { OldTime.tdMonth   = m' } | m' <- shrink month   ] ++
-        [ td { OldTime.tdDay     = d' } | d' <- shrink day     ] ++
-        [ td { OldTime.tdHour    = h' } | h' <- shrink hour    ] ++
-        [ td { OldTime.tdMin     = m' } | m' <- shrink minute  ] ++
-        [ td { OldTime.tdSec     = s' } | s' <- shrink second  ] ++
-        [ td { OldTime.tdPicosec = p' } | p' <- shrink picosec ]
+        [ td { OldTime.tdYear    = y' } | (NonNegative y') <- shrink $ NonNegative year] ++
+        [ td { OldTime.tdMonth   = m' } | (NonNegative m') <- shrink $ NonNegative month   ] ++
+        [ td { OldTime.tdDay     = d' } | (NonNegative d') <- shrink $ NonNegative day     ] ++
+        [ td { OldTime.tdHour    = h' } | (NonNegative h') <- shrink $ NonNegative hour    ] ++
+        [ td { OldTime.tdMin     = m' } | (NonNegative m') <- shrink $ NonNegative minute  ] ++
+        [ td { OldTime.tdSec     = s' } | (NonNegative s') <- shrink $ NonNegative second  ] ++
+        [ td { OldTime.tdPicosec = p' } | (NonNegative p') <- shrink $ NonNegative picosec ]
 
 instance CoArbitrary OldTime.TimeDiff where
     coarbitrary (OldTime.TimeDiff year month day hour minute second picosec) =
