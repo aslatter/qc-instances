@@ -32,8 +32,8 @@ matrix:
 
 install:
  - if [[ -z "$CONFIG" ]]; then
- -   curl "https://raw.githubusercontent.com/aslatter/haskell-constraints/master/$CONFIG/cabal.config" > cabal.config
- - fi
+     curl "https://raw.githubusercontent.com/aslatter/haskell-constraints/master/$CONFIG/cabal.config" > cabal.config
+   fi
  - cabal install --dependencies-only
 
 # We don't need sudo
