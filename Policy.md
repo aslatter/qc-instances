@@ -16,7 +16,7 @@ The removal of an instance will always result in incrementing the major version 
 
 # Backwards Compatibility
 
-Backwards compatibilty will be maintained, when desired, using the `MIN_VERSION` Cpp macros
+Backwards compatibility will be maintained, when desired, using the `MIN_VERSION` Cpp macros
 provided by Cabal.
 
 We intend that this package builds on Debian stable.
